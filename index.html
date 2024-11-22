@@ -354,8 +354,6 @@
                 console.log(`Language changed to: ${button.dataset.lang}`);
             });
         });
-    </script>
-    <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Add smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -387,21 +385,21 @@
             const longUrlElement = document.querySelector('.long-url');
             const shortUrlElement = document.querySelector('.short-url');
 
-            function updateDemoUrl() {
-                const demoContainer = document.querySelector('.demo-input');
-                demoContainer.style.opacity = '0';
+            // function updateDemoUrl() {
+            //     const demoContainer = document.querySelector('.demo-input');
+            //     demoContainer.style.opacity = '0';
                 
-                setTimeout(() => {
-                    longUrlElement.textContent = demoUrls[currentUrlIndex].long;
-                    shortUrlElement.textContent = demoUrls[currentUrlIndex].short;
-                    demoContainer.style.opacity = '1';
+            //     setTimeout(() => {
+            //         longUrlElement.textContent = demoUrls[currentUrlIndex].long;
+            //         shortUrlElement.textContent = demoUrls[currentUrlIndex].short;
+            //         demoContainer.style.opacity = '1';
                     
-                    currentUrlIndex = (currentUrlIndex + 1) % demoUrls.length;
-                }, 500);
-            }
+            //         currentUrlIndex = (currentUrlIndex + 1) % demoUrls.length;
+            //     }, 500);
+            // }
 
             // Change demo URL every 4 seconds
-            setInterval(updateDemoUrl, 4000);
+            // setInterval(updateDemoUrl, 4000);
 
             // Translations
             const translations = {
@@ -526,20 +524,21 @@
                 // Update all text content
                 document.querySelector('h1').textContent = translations[lang].title;
                 document.querySelector('.tagline').textContent = translations[lang].tagline;
-                document.querySelector('.hero-content .cta-button').textContent = translations[lang].ctaButton;
+                document.querySelector('.hero .cta-button').textContent = translations[lang].ctaButton;
 
                 // Update features
-                document.querySelector('.features').previousElementSibling.textContent = translations[lang].features.title;
+                // document.querySelector('.features').nextElementSibling.textContent = translations[lang].features.title;
                 updateFeatureContent(lang);
                 updateBenefitsContent(lang);
                 updateCtaContent(lang);
 
                 // Update custom link section
                 document.querySelector('.highlight-title').textContent = translations[lang].customLink.title;
-                document.querySelector('.custom-link-examples p').textContent = translations[lang].customLink.examples;
+                document.querySelector('.custom-link-demo p').textContent = translations[lang].customLink.examples;
             }
 
             function updateFeatureContent(lang) {
+                const sectionTitle = document.querySelector('.features .section-title').textContent = translations[lang].features.title;
                 const features = document.querySelectorAll('.feature-card');
                 const featureKeys = ['instant', 'custom', 'analytics', 'secure', 'cross'];
                 
@@ -551,8 +550,8 @@
             }
 
             function updateBenefitsContent(lang) {
-                document.querySelector('.benefits').previousElementSibling.textContent = translations[lang].benefits.title;
-                const benefits = document.querySelectorAll('.benefit-item');
+                document.querySelector('.benefits .section-title').textContent = translations[lang].benefits.title;
+                const benefits = document.querySelectorAll('.benefit-card');
                 const benefitKeys = ['ux', 'aesthetic', 'ctr'];
                 
                 benefits.forEach((item, index) => {
